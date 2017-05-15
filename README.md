@@ -71,7 +71,7 @@ Never, ever rebase commits that have been pushed to a shared repository.
 `$ git reset`				without specifying a flag it defaults to `git reset --mixed`
 
 ### Unstage files from index and reset pointer to HEAD
-`$ git reset HEAD <file>`		<file> is optional
+`$ git reset HEAD <file>`		`<file>` is optional
 
 ### Move HEAD to specified commit reference, index and staging are untouched
 `$ git reset --soft HEAD~1`		the committed changes are put back onto stage
@@ -92,7 +92,7 @@ Never, ever rebase commits that have been pushed to a shared repository.
 ### See commit history of a specific directory
 `$ git log -- <directory-path>`
 
-### Display the commits reachable from <until> but not from <since> 
+### Display the commits reachable from `<until>` but not from `<since>`
 `$ git log <since>..<until>` These parameters can be either commit ID’s or branch names
 
 ![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/gitlog.png "git log")
@@ -111,10 +111,10 @@ Never, ever rebase commits that have been pushed to a shared repository.
 `$ git log --author=<name>`
 
 ### Filter commits by date committed
-`$ git log --since --before		//--since “1 week ago”, --since “1st October 2016”, --since “1 day” `
+`$ git log --since --before		//--since "1 week ago", --since "1st October 2016", --since "1 day" `
 
 ### Filter commits by commit message
-`$ git log --grep=<string> --format=”%h %an %s”`	the arguments are an OR relationship, use `--all-match` for AND, format specifier glossary in resources	
+`$ git log --grep=<string> --format="%h %an %s"`	the arguments are an OR relationship, use `--all-match` for AND, format specifier glossary in resources	
 
 ### Look for differences that change the number of occurrences of the specified string
 `$ git log -S<string>`		there is no '=' or space/colon between the `-S` and the string we are searching for
