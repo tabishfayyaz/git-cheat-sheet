@@ -1,8 +1,7 @@
 
 ## Introduction
 
-**_head_**
-- to define what is currently checked out: 
+**_head_** - to define what is currently checked out: 
 - If you checkout a branch, Head symbolically refers to that branch, indicating that the branch name should be updated after the next commit operation.
 - If you checkout a specific commit, Head refers to that commit only. is is referred to as a detached head, and occurs, for example, if you check out a tag name.	 
 
@@ -69,16 +68,16 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 ## git-reset
 ### Unstage all files but leave their content as it is
-`$ git reset`				// without specifying a flag it defaults to git reset --mixed
+`$ git reset`				without specifying a flag it defaults to git reset --mixed
 
 ### Unstage files from index and reset pointer to HEAD
-`$ git reset HEAD <file>`		// <file> is optional
+`$ git reset HEAD <file>`		<file> is optional
 
 ### Move HEAD to specified commit reference, index and staging are untouched
-`$ git reset --soft HEAD~1`		// the committed changes are put back onto stage
+`$ git reset --soft HEAD~1`		the committed changes are put back onto stage
 
 ### Unstage files and undo any changes in the working directory since last commit
-`$ git reset --hard`			// hard flag is what update the files (careful: permanent undo on uncommitted changes)
+`$ git reset --hard`			hard flag is what update the files (careful: permanent undo on uncommitted changes)
 
 ### Move HEAD to specified commit reference, without preserving local changes
 `$ git reset --hard HEAD~1`
