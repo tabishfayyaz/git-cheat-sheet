@@ -95,6 +95,7 @@ Never, ever rebase commits that have been pushed to a shared repository.
 ### Display the commits reachable from <until> but not from <since> 
 `$ git log <since>..<until>` These parameters can be either commit ID’s or branch names
 
+![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/gitlog.png "git log")
 
 ### Include extra information about altered files in the log output
 `$ git log --stat`
