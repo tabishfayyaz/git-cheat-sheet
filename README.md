@@ -68,7 +68,7 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 ## git-reset
 ### Unstage all files but leave their content as it is
-`$ git reset`				without specifying a flag it defaults to git reset --mixed
+`$ git reset`				without specifying a flag it defaults to `git reset --mixed`
 
 ### Unstage files from index and reset pointer to HEAD
 `$ git reset HEAD <file>`		<file> is optional
