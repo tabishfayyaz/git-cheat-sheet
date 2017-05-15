@@ -82,3 +82,38 @@ Never, ever rebase commits that have been pushed to a shared repository.
 ### Move HEAD to specified commit reference, without preserving local changes
 `$ git reset --hard HEAD~1`
 
+## git-log
+### See messages in commit history & nothing else
+`$ git log --oneline	--no-merges` --no-merges to remove merge commits
+
+### See commit history of a specific file
+`$ git log --oneline filename`
+
+### See commit history of a specific directory
+`$ git log -- <directory-path>`
+
+### Display the commits reachable from <until> but not from <since> 
+`$ git log <since>..<until>` These parameters can be either commit ID’s or branch names
+
+
+### Include extra information about altered files in the log output
+`$ git log --stat`
+
+### See commit history for the last two commits
+`$ git log -2`
+
+### See commit history for the last two commits, with diff
+`$ git log -p -2`
+### Show only names and status of changed files.
+`$ git log --name-status`
+### Look for only commits from specific author
+`$ git log --author=<name>`
+
+### Filter commits by date committed
+`$ git log --since --before		//--since “1 week ago”, --since “1st October 2016”, --since “1 day” `
+
+### Filter commits by commit message
+`$ git log --grep=<string> --format=”%h %an %s”`	the arguments are an OR relationship, use `--all-match` for AND, format specifier glossary in resources	
+
+### Look for differences that change the number of occurrences of the specified string
+`$ git log -S<string>`		there is no '=' or space/colon between the `-S` and the string we are searching for
