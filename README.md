@@ -118,3 +118,127 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 ### Look for differences that change the number of occurrences of the specified string
 `$ git log -S<string>`		there is no '=' or space/colon between the `-S` and the string we are searching for
+
+## git-branch
+### Create a branch
+`$ git branch <feature-branch>	// it uses the current HEAD as the starting point for the new branch`
+
+### Delete a branch
+$ git branch -d <feature-branch>	// -D would force the removal of an unmerged branch
+
+### List remote branches
+$ git branch -r
+
+### See all branches
+`$ git branch -a`
+
+### Rename a branch
+`$ git branch -m <oldname> <newname>`
+`$ git branch -m <newname>			// rename current branch`
+
+
+## Sample .gitconfig file
+```
+[color]
+       ui = true
+[alias]
+ s = status
+ b = branch -a -v
+ d = diff
+ r = remote -v
+ f = fetch
+ gd = diff
+ ss = submodule status
+ su = submodule update
+ plog = log --format='%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)'
+ forall = "!f(){ git "$@" && git submodule foreach git "$@"; }; f"      # where $@ is any argument passed 
+                                                                        to forall e.g. $git forall status will run it on all       
+                                                                        including submodules      
+ graph = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+
+ conflicts = diff --name-only --diff-filter=U
+    
+[user]
+       name = <firstname> <lastname>
+       email = <firstname.lastname@email.com>
+
+```
+
+## Sample bash file for git
+
+```
+alias h='history'
+alias hg='history | grep'
+alias gs='git status'
+alias gb='git branch'
+alias gd='git diff'
+
+function gfo(){
+        git fetch origin && git submodule foreach "git fetch origin"
+}
+
+function gco() {
+  if [ -n "$1" ]; then
+        git checkout $1 &&  git submodule foreach "git checkout $1"
+  fi
+}
+
+#create branch
+function gcb() {
+  if [ -n "$1" ]; then
+        git checkout -b $1 && git submodule foreach "git checkout -b $1"
+  fi
+}
+
+#delete branch
+function gdb() {
+  if [ -n "$1" ]; then
+        git branch -d $1 && git submodule foreach "git branch -d $1"
+  fi
+}
+
+function gpull() {
+  if [ -n "$1" ]; then
+        git pull $1 &&  git submodule foreach "git pull $1"
+  fi
+}
+
+function gpush() {
+  if [ -n "$1" ]; then
+        git push $1 &&  git submodule foreach "git push $1"
+  fi
+}
+
+function gmb() {
+  if [ -n "$1" ]; then
+        git merge $1 &&  git submodule foreach "git merge $1"
+  fi
+}
+
+#nicer git log
+function gl(){
+        if [ -n "$1" ]; then
+                git log --format="%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)" -n $1
+        else
+                git log --format="%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)" 
+        fi
+}
+```
+
+## Resources
+- http://gitref.org/index.html
+- http://rypress.com/tutorials/git/index
+- https://orga.cat/posts/most-useful-git-commands
+- https://www.kernel.org/pub/software/scm/git/docs/user-manual.html
+- http://ndpsoftware.com/git-cheatsheet.html#loc=workspace
+- http://gitready.com/
+- http://rogerdudler.github.com/git-guide/
+- http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html
+- git rebase: https://www.atlassian.com/git/tutorials
+- git tags: http://alblue.bandlem.com/2011/04/git-tip-of-week-tags.html
+- format specifiers: https://www.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
+- human git aliases: http://gggritso.com/human-git-aliases
+- https://www.codeschool.com/learn/git
+- http://learngitbranching.js.org/
+- https://try.github.io/levels/1/challenges/1
+
