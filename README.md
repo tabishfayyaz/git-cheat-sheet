@@ -293,6 +293,7 @@ $ git stash pop
 ### Set your details	
 `$ git config --global user.name "John Doe"`	 // if git config is used without --global the settings are 
                                               set for the specific project.
+
 `$ git config --global user.email "john@example.com"`
 
 ### See your settings
