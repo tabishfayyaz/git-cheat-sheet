@@ -140,7 +140,6 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 `$ git branch -m <newname>`			// rename current branch
 
-
 ## git-diff
 
 ## View the difference between the working directory and the staging area
@@ -168,6 +167,218 @@ $ git diff --cached <path-to-file>
 
 ![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff2.png "git diff")
 
+### git-checkout
+## View a previous commit
+`$ git checkout <commit-id>`
+
+## Revert an individual file to match the specified commit without switching branches
+`$ git checkout <commit-id> <file>		// the <commit-id> could be a stash reference e.g. stash@{0}`
+
+## Create new branch
+`$ git checkout -b <branch-name>`
+
+## Change file back to last commit 
+`$ git checkout -- <file-name>`
+
+## Checkout file in a conflicted state
+```
+$ git checkout --theirs <optional-file-name>
+$ git checkout --ours <optional-file-name>
+```
+
+### git-commit
+
+## Add staged changes to the most recent commit instead of creating a new one
+`$ git commit --amend`
+
+## Stage tracked files and commit them
+`$ git commit -a -m “<message>”`	// untracked files are not committed
+
+### git-rebase
+
+## Move the current branch’s commits to the tip of branch-name
+`$ git rebase <branch-name>`		// rebasing lets us move branches around by changing the commit they are 
+                              based on
+
+## Perform an interactive rebase and select actions for each commit
+`$ git rebase -i <new-base>`		// rebasing also allows us to manipulate individual commits
+
+## Continue a rebase after amending a commit
+`$ git rebase --continue`
+
+## Abandon the current interactive rebase and return the repository to its former state
+`$ git rebase --abort`
+
+### git-merge
+
+## Merge a branch into the checked-out branch
+`$ git merge <feature-branch>`	// fast-forward merge: keeps changeset in a linear history, instead of 
+                               creating a new commit to represent the merge, git will just point master to the latest commit  
+                               of the feature branch 
+
+## Force a merge commit even if git could do a fast-forward merge
+`$ git merge --no-ff <branch-name>`
+
+## Merge a remote branch into the checked-out branch
+`$ git merge <remote-name>/<branch-name>`
+
+## git-remote
+
+### List remote repositories
+`$ git remote`
+
+### Remove the specified remote from your bookmarked connections
+`$ git remote rm <remote-name>`
+
+### Add a remote repository
+`$ git remote add <remote-name> <remote-path>`
+
+### View remote urls
+`$ git remote -v`
+
+### Change origin url
+`$ git remote set-url origin http//github.com/repo.git`
+
+## git-push
+
+### Push a local branch to another repository
+`$ git push <remote-name> <branch-name>`	  // An important property of git push is that it does not
+                                           automatically push tags 
+### Push a tag to another repository
+`$ git push <remote-name> <tag-name>`
+
+### Delete remote branch
+`$ git push <origin> <branch-name>`
+
+## git-stash
+
+### Temporarily stash changes to create a clean working directory
+`$ git stash`
+
+### Re-apply stashed changes to the working directory
+`$ git stash apply`
+
+### Remove all local changes from working copy
+```
+$ git stash save --keep-index
+$ git stash drop
+```
+
+### Please, commit your changes or stash them before you can merge
+```
+$ git stash
+$ git stash pop
+```
+
+### git-config
+
+### Create a shortcut for a command and store it in the global configuration file
+`$ git config --global alias.<alias-name> <git-command>`
+
+### Set your details	
+`$ git config --global user.name "John Doe"`	 // if git config is used without --global the settings are 
+                                              set for the specific project.
+`$ git config --global user.email "john@example.com"`
+
+### See your settings
+$ git config --list
+
+## git-show
+
+### See the file names changed in a specific commit
+`$ git show --name-only COMMIT_ID`
+
+### See details (log message, text diff) of a commit
+`$ git show COMMIT_ID`
+
+## git-clean
+
+### Remove untracked files
+`$ git clean -f` (careful: permanent undo on uncommitted changes)
+
+## Including directories:
+`$ git clean -f -d`
+
+## Dry run:
+`$ git clean -n -f -d`
+
+
+## git-fetch
+
+### Get all branches
+`$ git fetch origin`
+
+### Download remote branch information, but do not merge anything
+`$ git fetch <remote-name>`		// fetching and pushing are almost opposites, in that fetching imports 
+                             branches, while pushing exports branches to another repository. Fetch won’t merge your changes 
+                             unlike pull
+
+
+## git-config
+```
+<repo>/.git/config 		// repo specific settings
+
+$ git config --global merge.tool filemerge
+$ git config --global color.ui true
+$ git config --global core.editor vim
+```
+
+## Edit the git config file
+`$ git config --global --edit`
+
+## Setting your email, user in git
+```
+$ git config --global user.email <email-id>
+$ git config --global user.name <firstname lastname>
+```
+
+## Miscellaneous
+
+### See commit history for just the current branch
+`$ git cherry -v <branch-name>`	// branch-name is the branch you want to compare with
+
+## Remove from repository all locally deleted files
+`$ git rm $(git ls-files --deleted)`
+
+## Remove a file from staging area and also off your disk (the working directory)
+`$ git rm <file-name>`
+
+## Display the local, chronological history of a repository
+`$ git reflog`
+
+## Create a clone of a remote Git repository
+`$ git clone <remote-path>`
+
+## Create an annotated tag pointing to the most recent commit
+`$ git tag -a <tag-name> -m "<description>"`
+
+## Undo this commit by applying a new commit
+`$ git revert 91f42ec`		// the unique hash is of the commit we want to undo (not restore)
+
+## Look for conflicts in your current files
+```
+$ grep -H -r "<<<" *
+$ grep -H -r ">>>" *
+$ grep -H -r '^=======$' *
+```
+
+## Remove files that have been deleted
+`$ git add -u`
+
+## Show branches history and their commits
+`$ git show-branch`
+
+## Find common ancestor for a merge 
+`$ git merge-base feature master`
+
+## Get help for a specific git command
+`$ git help clone`
+
+## Merge selected commits into current branch
+`$ git cherry-pick <hash-1> <hash-2> <hash-3>`
+
+## Take a branch version for submodule reference e.g. when git rebase or git merge causes conflict
+`$ git reset <master> path/to/submodule`
 
 ## Sample .gitconfig file
 ```
