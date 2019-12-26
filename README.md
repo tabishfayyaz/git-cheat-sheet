@@ -325,9 +325,9 @@ $ git config --list
 `$ git fetch origin`
 
 ### Download remote branch information, but do not merge anything
-`$ git fetch <remote-name>`		// fetching and pushing are almost opposites, in that fetching imports 
-                             branches, while pushing exports branches to another repository. Fetch won’t merge your changes 
-                             unlike pull
+`$ git fetch <remote-name>`		 // fetching and pushing are almost opposites, in that fetching imports 
+                              branches, while pushing exports branches to another repository. Fetch won’t merge your changes 
+                              unlike pull
 
 
 ## git-config
