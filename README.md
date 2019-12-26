@@ -142,10 +142,10 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 ## git-diff
 
-## View the difference between the working directory and the staging area
+### View the difference between the working directory and the staging area
 `$ git diff`		// to see how a project has changed since a known point in past
 
-## View the difference between the staging area and the most recent commit
+### View the difference between the staging area and the most recent commit
 ```
 $ git diff --cached
 $ git diff --cached <path-to-file>
@@ -153,74 +153,89 @@ $ git diff --cached <path-to-file>
 
 ![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff.png "git diff")
 
-## See differences between the current state and a branch
+### See differences between the current state and a branch
 `$ git diff branch-name`
 
-## See differences in a file, between the current state and a branch
+### See differences in a file, between the current state and a branch
 `$ git diff branch-name path/to/file`
 
-## See the files changed between two commits
+### See the files changed between two commits
 `$ git diff --name-only <commit_id1> <commit_id2>`	// same as specifying with two dots
 
-## View the difference between two commits
+### View the difference between two commits
 `$ git diff <commit-id1>...<commit-id2>`	// to see what unique work is in one branch, note there are 3 dots:
 
 ![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff2.png "git diff")
 
-### git-checkout
-## View a previous commit
+## git-checkout
+
+### View a previous commit
 `$ git checkout <commit-id>`
 
-## Revert an individual file to match the specified commit without switching branches
+### Revert an individual file to match the specified commit without switching branches
 `$ git checkout <commit-id> <file>		// the <commit-id> could be a stash reference e.g. stash@{0}`
 
-## Create new branch
+### Create new branch
 `$ git checkout -b <branch-name>`
 
-## Change file back to last commit 
+### Change file back to last commit 
 `$ git checkout -- <file-name>`
 
-## Checkout file in a conflicted state
+### Checkout file in a conflicted state
 ```
 $ git checkout --theirs <optional-file-name>
 $ git checkout --ours <optional-file-name>
 ```
 
-### git-commit
+## git-commit
 
-## Add staged changes to the most recent commit instead of creating a new one
+### Add staged changes to the most recent commit instead of creating a new one
 `$ git commit --amend`
 
-## Stage tracked files and commit them
+### Stage tracked files and commit them
 `$ git commit -a -m “<message>”`	// untracked files are not committed
 
-### git-rebase
+## git-rebase
 
-## Move the current branch’s commits to the tip of branch-name
+### Move the current branch’s commits to the tip of branch-name
 `$ git rebase <branch-name>`		// rebasing lets us move branches around by changing the commit they are 
                               based on
 
-## Perform an interactive rebase and select actions for each commit
+### Perform an interactive rebase and select actions for each commit
 `$ git rebase -i <new-base>`		// rebasing also allows us to manipulate individual commits
 
-## Continue a rebase after amending a commit
+### Continue a rebase after amending a commit
 `$ git rebase --continue`
 
-## Abandon the current interactive rebase and return the repository to its former state
+### Abandon the current interactive rebase and return the repository to its former state
 `$ git rebase --abort`
 
-### git-merge
+## git-merge
 
-## Merge a branch into the checked-out branch
+### Merge a branch into the checked-out branch
 `$ git merge <feature-branch>`	// fast-forward merge: keeps changeset in a linear history, instead of 
                                creating a new commit to represent the merge, git will just point master to the latest commit  
                                of the feature branch 
 
-## Force a merge commit even if git could do a fast-forward merge
+### Force a merge commit even if git could do a fast-forward merge
 `$ git merge --no-ff <branch-name>`
 
-## Merge a remote branch into the checked-out branch
+### Merge a remote branch into the checked-out branch
 `$ git merge <remote-name>/<branch-name>`
+
+## Fast-Forward Merge
+
+Merging css branch into master. Git does a fast-forward merge (didn’t add any new commits) since it is possible to “fast forward” through the new commits in the css branch:
+
+![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/merge1.png "git merge")
+
+Fast-forward merges are not reflected in the project history. This is the tangible distinction between fast-forward merges and 3-way merges. 
+
+### 3-Way Merge
+
+Merging master into crazy branch. Git does a 3-way merge (create an extra commit to merge two branches whose history has diverged as it is not possible to “fast forward” through the new commits). Git looks at three commits (numbered in the second figure below) to generate the merge commit. As a result, the merge commit has two parent commits and the crazy branch has access to both its history and the master history.
+
+![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/merge2.png "git merge")
 
 ## git-remote
 
@@ -270,7 +285,7 @@ $ git stash
 $ git stash pop
 ```
 
-### git-config
+## git-config
 
 ### Create a shortcut for a command and store it in the global configuration file
 `$ git config --global alias.<alias-name> <git-command>`
@@ -296,10 +311,10 @@ $ git config --list
 ### Remove untracked files
 `$ git clean -f` (careful: permanent undo on uncommitted changes)
 
-## Including directories:
+### Including directories:
 `$ git clean -f -d`
 
-## Dry run:
+### Dry run:
 `$ git clean -n -f -d`
 
 
@@ -323,10 +338,10 @@ $ git config --global color.ui true
 $ git config --global core.editor vim
 ```
 
-## Edit the git config file
+### Edit the git config file
 `$ git config --global --edit`
 
-## Setting your email, user in git
+### Setting your email, user in git
 ```
 $ git config --global user.email <email-id>
 $ git config --global user.name <firstname lastname>
@@ -337,47 +352,47 @@ $ git config --global user.name <firstname lastname>
 ### See commit history for just the current branch
 `$ git cherry -v <branch-name>`	// branch-name is the branch you want to compare with
 
-## Remove from repository all locally deleted files
+### Remove from repository all locally deleted files
 `$ git rm $(git ls-files --deleted)`
 
-## Remove a file from staging area and also off your disk (the working directory)
+### Remove a file from staging area and also off your disk (the working directory)
 `$ git rm <file-name>`
 
-## Display the local, chronological history of a repository
+### Display the local, chronological history of a repository
 `$ git reflog`
 
-## Create a clone of a remote Git repository
+### Create a clone of a remote Git repository
 `$ git clone <remote-path>`
 
-## Create an annotated tag pointing to the most recent commit
+### Create an annotated tag pointing to the most recent commit
 `$ git tag -a <tag-name> -m "<description>"`
 
-## Undo this commit by applying a new commit
+### Undo this commit by applying a new commit
 `$ git revert 91f42ec`		// the unique hash is of the commit we want to undo (not restore)
 
-## Look for conflicts in your current files
+### Look for conflicts in your current files
 ```
 $ grep -H -r "<<<" *
 $ grep -H -r ">>>" *
 $ grep -H -r '^=======$' *
 ```
 
-## Remove files that have been deleted
+### Remove files that have been deleted
 `$ git add -u`
 
-## Show branches history and their commits
+### Show branches history and their commits
 `$ git show-branch`
 
-## Find common ancestor for a merge 
+### Find common ancestor for a merge 
 `$ git merge-base feature master`
 
-## Get help for a specific git command
+### Get help for a specific git command
 `$ git help clone`
 
-## Merge selected commits into current branch
+### Merge selected commits into current branch
 `$ git cherry-pick <hash-1> <hash-2> <hash-3>`
 
-## Take a branch version for submodule reference e.g. when git rebase or git merge causes conflict
+### Take a branch version for submodule reference e.g. when git rebase or git merge causes conflict
 `$ git reset <master> path/to/submodule`
 
 ## Sample .gitconfig file
