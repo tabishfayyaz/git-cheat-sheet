@@ -124,10 +124,10 @@ Never, ever rebase commits that have been pushed to a shared repository.
 ## git-branch
 
 ### Create a branch
-`$ git branch <feature-branch>	// it uses the current HEAD as the starting point for the new branch`
+`$ git branch <feature-branch>`	// it uses the current HEAD as the starting point for the new branch
 
 ### Delete a branch
-`$ git branch -d <feature-branch>	// -D would force the removal of an unmerged branch`
+`$ git branch -d <feature-branch>`	// -D would force the removal of an unmerged branch
 
 ### List remote branches
 `$ git branch -r`
@@ -137,6 +137,7 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 ### Rename a branch
 `$ git branch -m <oldname> <newname>`
+
 `$ git branch -m <newname>`			// rename current branch
 
 
@@ -146,8 +147,10 @@ Never, ever rebase commits that have been pushed to a shared repository.
 `$ git diff`		// to see how a project has changed since a known point in past
 
 ## View the difference between the staging area and the most recent commit
-`$ git diff --cached`
-`$ git diff --cached <path-to-file>`
+```
+$ git diff --cached
+$ git diff --cached <path-to-file>
+```
 
 ![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff.png "git diff")
 
@@ -158,10 +161,10 @@ Never, ever rebase commits that have been pushed to a shared repository.
 `$ git diff branch-name path/to/file`
 
 ## See the files changed between two commits
-`$ git diff --name-only <commit_id1> <commit_id2>	// same as specifying with two dots`
+`$ git diff --name-only <commit_id1> <commit_id2>`	// same as specifying with two dots
 
 ## View the difference between two commits
-`$ git diff <commit-id1>...<commit-id2>	// to see what unique work is in one branch, note there are 3 dots:`
+`$ git diff <commit-id1>...<commit-id2>`	// to see what unique work is in one branch, note there are 3 dots:
 
 ![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff2.png "git diff")
 
