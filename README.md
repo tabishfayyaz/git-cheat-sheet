@@ -67,6 +67,7 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 
 ## git-reset
+
 ### Unstage all files but leave their content as it is
 `$ git reset`				without specifying a flag it defaults to `git reset --mixed`
 
@@ -83,6 +84,7 @@ Never, ever rebase commits that have been pushed to a shared repository.
 `$ git reset --hard HEAD~1`
 
 ## git-log
+
 ### See messages in commit history & nothing else
 `$ git log --oneline	--no-merges` --no-merges to remove merge commits
 
@@ -120,21 +122,48 @@ Never, ever rebase commits that have been pushed to a shared repository.
 `$ git log -S<string>`		there is no '=' or space/colon between the `-S` and the string we are searching for
 
 ## git-branch
+
 ### Create a branch
 `$ git branch <feature-branch>	// it uses the current HEAD as the starting point for the new branch`
 
 ### Delete a branch
-$ git branch -d <feature-branch>	// -D would force the removal of an unmerged branch
+`$ git branch -d <feature-branch>	// -D would force the removal of an unmerged branch`
 
 ### List remote branches
-$ git branch -r
+`$ git branch -r`
 
 ### See all branches
 `$ git branch -a`
 
 ### Rename a branch
 `$ git branch -m <oldname> <newname>`
-`$ git branch -m <newname>			// rename current branch`
+`$ git branch -m <newname>`			// rename current branch
+
+
+## git-diff
+
+## View the difference between the working directory and the staging area
+`$ git diff`		// to see how a project has changed since a known point in past
+
+## View the difference between the staging area and the most recent commit
+`$ git diff --cached`
+`$ git diff --cached <path-to-file>`
+
+![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff.png "git diff")
+
+## See differences between the current state and a branch
+`$ git diff branch-name`
+
+## See differences in a file, between the current state and a branch
+`$ git diff branch-name path/to/file`
+
+## See the files changed between two commits
+`$ git diff --name-only <commit_id1> <commit_id2>	// same as specifying with two dots`
+
+## View the difference between two commits
+`$ git diff <commit-id1>...<commit-id2>	// to see what unique work is in one branch, note there are 3 dots:`
+
+![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff2.png "git diff")
 
 
 ## Sample .gitconfig file
