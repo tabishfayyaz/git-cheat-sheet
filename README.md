@@ -371,6 +371,11 @@ $ git config --global user.name <firstname lastname>
 ### Undo this commit by applying a new commit
 `$ git revert 91f42ec`		// the unique hash is of the commit we want to undo (not restore)
 
+### Undo last commit
+`$ git reset --soft HEAD~1`  // changes in undone revisions are preserved
+
+`$ git reset --hard HEAD~1`  // changes are not preserved 
+
 ### Look for conflicts in your current files
 ```
 $ grep -H -r "<<<" *
