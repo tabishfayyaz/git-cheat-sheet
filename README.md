@@ -449,8 +449,10 @@ function gco() {
 
 #create branch
 function gcb() {
-  if [ -n "$1" ]; then
-        git checkout -b $1 && git submodule foreach "git checkout -b $1"
+  if [ "$#" -eq 2 ]; then
+        git checkout -b $1 $2 && git submodule foreach "git checkout -b $1 $2"
+  else
+    echo "Missing 2nd argument: name of branch to base new branch upon"
   fi
 }
 
@@ -479,12 +481,11 @@ function gmb() {
   fi
 }
 
-#nicer git log
 function gl(){
         if [ -n "$1" ]; then
                 git log --format="%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)" -n $1
         else
-                git log --format="%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)" 
+                git log --format="%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)"
         fi
 }
 ```
