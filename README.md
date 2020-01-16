@@ -123,6 +123,8 @@ Never, ever rebase commits that have been pushed to a shared repository.
 
 ## git-branch
 
+![git branching](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-branching.png)
+
 ### Create a branch
 `$ git branch <feature-branch>`	// it uses the current HEAD as the starting point for the new branch
 
