@@ -508,4 +508,4 @@ function gl(){
 - https://www.codeschool.com/learn/git
 - http://learngitbranching.js.org/
 - https://try.github.io/levels/1/challenges/1
-
+- revert back to older commit: https://learnwithparam.com/blog/git-revert-to-older-commit/
