@@ -433,11 +433,18 @@ $ grep -H -r '^=======$' *
 ## Sample bash file for git
 
 ```
+#colored git branch name on terminal
+export PS1="\w \[\e[91m\]\$(git_branch)\[\e[00m\]$ "
+
 alias h='history'
 alias hg='history | grep'
 alias gs='git status'
 alias gb='git branch'
 alias gd='git diff'
+
+git_branch(){
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
 
 function gfo(){
         git fetch origin && git submodule foreach "git fetch origin"
