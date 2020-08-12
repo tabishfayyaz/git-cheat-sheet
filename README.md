@@ -354,8 +354,8 @@ $ git config --global user.name <firstname lastname>
 
 ### remove unused remote branches and general clean-up
 ```
-git fetch --all --prune
-git gc
+$ git fetch --all --prune
+$ git gc
 ```
 
 ### See commit history for just the current branch
