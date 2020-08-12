@@ -352,6 +352,12 @@ $ git config --global user.name <firstname lastname>
 
 ## Miscellaneous
 
+### remove unused remote branches and general clean-up
+```
+git fetch --all --prune
+git gc
+```
+
 ### See commit history for just the current branch
 `$ git cherry -v <branch-name>`	// branch-name is the branch you want to compare with
 
