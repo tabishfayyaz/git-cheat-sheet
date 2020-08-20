@@ -522,3 +522,4 @@ function gl(){
 - http://learngitbranching.js.org/
 - https://try.github.io/levels/1/challenges/1
 - revert back to older commit: https://learnwithparam.com/blog/git-revert-to-older-commit/
+- git auto complete: https://gist.github.com/jpalmieri/078cbb0581de5c53f3b7
