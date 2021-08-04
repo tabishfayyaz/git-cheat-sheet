@@ -121,6 +121,13 @@ Never, ever rebase commits that have been pushed to a shared repository.
 ### Look for differences that change the number of occurrences of the specified string
 `$ git log -S<string>`		there is no '=' or space/colon between the `-S` and the string we are searching for
 
+### Show all commits on one line that are in feature branch but not in (carrot) develop
+```
+ $ git log --oneline feature_branch ^develop | wc -l
+ 
+ $ git log --oneline develop..feature_branch | wc -l  // different command same output
+ ```
+
 ## git-branch
 
 ![git branching](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-branching.png)
