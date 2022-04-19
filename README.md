@@ -416,24 +416,31 @@ $ grep -H -r '^=======$' *
 ### Take a branch version for submodule reference e.g. when git rebase or git merge causes conflict
 `$ git reset <master> path/to/submodule`
 
-## Sample .gitconfig file ($ git config --global edit)
+## Sample .gitconfig file ($ git config --global --edit)
 ```
 [color]
        ui = true
+       branch = auto
+       diff = auto
+       status = auto
+       showbranch = auto
+       
+       
+[core]
+      editor = /usr/bin/vim
+        
 [alias]
- s = status
- b = branch -a -v
- d = diff
- r = remote -v
- f = fetch
- gd = diff
- ss = submodule status
- su = submodule update
- plog = log --format='%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)'
- forall = "!f(){ git "$@" && git submodule foreach git "$@"; }; f"      # where $@ is any argument passed 
-                                                                        to forall e.g. $git forall status will run it on all       
-                                                                        including submodules      
- graph = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+      s = status
+      b = branch -a -v
+      d = diff
+      r = remote -v
+      f = fetch
+      gd = diff
+      ss = submodule status
+      su = submodule update
+      plog = log --format='%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)'
+      forall = "!f(){ git "$@" && git submodule foreach git "$@"; }; f"      # where $@ is any argument passed to forall e.g. $git forall status will run it on all including submodules      
+     graph = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
 
  conflicts = diff --name-only --diff-filter=U
     
@@ -522,13 +529,10 @@ function gl(){
 ```
 
 ## Resources
-- http://gitref.org/index.html
-- http://rypress.com/tutorials/git/index
 - https://orga.cat/posts/most-useful-git-commands
 - https://www.kernel.org/pub/software/scm/git/docs/user-manual.html
 - http://ndpsoftware.com/git-cheatsheet.html#loc=workspace
 - http://gitready.com/
-- http://rogerdudler.github.com/git-guide/
 - http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html
 - git rebase: https://www.atlassian.com/git/tutorials
 - git tags: http://alblue.bandlem.com/2011/04/git-tip-of-week-tags.html
