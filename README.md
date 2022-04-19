@@ -416,7 +416,7 @@ $ grep -H -r '^=======$' *
 ### Take a branch version for submodule reference e.g. when git rebase or git merge causes conflict
 `$ git reset <master> path/to/submodule`
 
-## Sample .gitconfig file
+## Sample .gitconfig file ($ git config --global edit)
 ```
 [color]
        ui = true
@@ -443,12 +443,21 @@ $ grep -H -r '^=======$' *
 
 ```
 
-## Sample bash file for git
+## Sample bash/zsh file for git
 
 ```
-#colored git branch name on terminal
-export PS1="\w \[\e[91m\]\$(git_branch)\[\e[00m\]$ "
+#default is: PS1='\h:\W \u\$ '
+#export PS1='\w $(git_branch)$ '
 
+#git branch in prompt for bash
+#export PS1="\w \[\e[91m\]\$(git_branch)\[\e[00m\]$ "
+
+#git branch in prompt for zsh
+autoload -U colors && colors
+setopt prompt_subst
+PROMPT='%1~ %{$fg[red]%}$(git_branch)%{$reset_color%} > '
+
+alias rm='rm -i'
 alias h='history'
 alias hg='history | grep'
 alias gs='git status'
