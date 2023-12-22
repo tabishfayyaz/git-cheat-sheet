@@ -416,6 +416,9 @@ $ grep -H -r '^=======$' *
 ### Take a branch version for submodule reference e.g. when git rebase or git merge causes conflict
 `$ git reset <master> path/to/submodule`
 
+### List missing commits between two branches
+`git log --no-merges --format="%C(red) %h %C(green) %ad %C(yellow) %an %C(black) %s %C(red bold) %D %C(reset)" release_10.33 ^develop`
+
 ## Sample .gitconfig file ($ git config --global --edit)
 ```
 [color]
