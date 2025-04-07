@@ -465,7 +465,7 @@ $ grep -H -r '^=======$' *
 #git branch in prompt for zsh
 autoload -U colors && colors
 setopt prompt_subst
-PROMPT='%1~ %{$fg[red]%}$(git_branch)%{$reset_color%} > '
+PROMPT='%1~ %{$fg[red]%}$(git_branch)%{$reset_color%} $ '
 
 alias rm='rm -i'
 alias h='history'
