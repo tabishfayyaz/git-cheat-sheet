@@ -176,6 +176,9 @@ $ git diff --cached <path-to-file>
 
 ![alt text](https://github.com/tabishfayyaz/git-cheat-sheet/raw/master/images/git-diff2.png "git diff")
 
+### Find a file path and then view the difference between current branch and develop
+`$ find . -type f -name ConflictTest.kt | xargs git diff develop`
+
 ## git-checkout
 
 ### View a previous commit
